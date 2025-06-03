@@ -99,8 +99,9 @@ void printGoalsTable(List<Goal> goals) {
 }
 
 // Helper function to determine how many months are left until a goal's end date
-int monthsUntilEndDate(DateTime endDate) {
-  final now = DateTime.now();
-  final months = (endDate.year - now.year) * 12 + (endDate.month - now.month);
+int monthsUntilEndDate(DateTime endDate, {DateTime? startDate}) {
+  startDate ??= DateTime.now(); // Use current date if no start date is provided
+  final months =
+      (endDate.year - startDate.year) * 12 + (endDate.month - startDate.month);
   return months > 0 ? months : 0; // Ensure non-negative
 }
